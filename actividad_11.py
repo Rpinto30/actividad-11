@@ -1,11 +1,4 @@
-proper = {'123456789': {'name': 'pANL', 'tel': 12345678,
-                        'cars': [{'plac': 'asd456', 'marc': 'papa', 'model': 'papa II', 'year': 2010, 'paid': 'Sí'},
-                                 {'plac': 'QW7E89', 'marc': 'PAPA III', 'model': 'PAPA IV', 'year': 2015, 'paid': 'Sí'}]},
-          '1283728391': {'name': 'ALFONSO', 'tel': 87654321,
-                         'cars': [{'plac': '101', 'marc': 'PALA', 'model': 'PALA II', 'year': 2007, 'paid': 'Sí'},
-                                  {'plac': 'AWEU', 'marc': 'PALA III', 'model': 'PALA IV', 'year': 2020, 'paid': 'No'},
-                                  {'plac': '9Q8EA', 'marc': 'PALA V', 'model': 'PALA VI', 'year': 2026, 'paid': 'Sí'}]}}
-
+proper = {}
 error_mesagge = '-'*50+'\n'+"✖"*5+"   Lo siento, intentelo nuevamente   "+"✖"*5
 
 def input_integer(message): #INGRESAR UN ENTERO Y VERIFICAR QUE SU ENTRADA SEA VALIDA
