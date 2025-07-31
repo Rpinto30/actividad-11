@@ -1,4 +1,5 @@
 proper = {}
+placas =  []
 error_mesagge = '-'*50+'\n'+"✖"*5+"   Lo siento, intentelo nuevamente   "+"✖"*5
 
 def input_integer(message): #INGRESAR UN ENTERO Y VERIFICAR QUE SU ENTRADA SEA VALIDA
@@ -35,7 +36,14 @@ for i in range(n):
     cars = []
     for j in range(c_cars):
         print("-"*10+f"VEHICULO {j+1}"+"-"*10)
-        plac = input("▶  Ingresa placa: ")
+        while True:
+            plac = input("▶  Ingresa placa: ")
+            if plac in placas:
+                placas.pop()
+                print(error_mesagge)
+            else:
+                placas.append(plac)
+                break
         marc = input("▶  Ingresa el nombre de la marca: ")
         model = input("▶  Ingresa el modelo del auto: ")
         year = input_integer("▶  Ingresa el año del vehiculo: ")
