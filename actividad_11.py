@@ -1,10 +1,10 @@
 proper = {'123456789': {'name': 'pANL', 'tel': 12345678,
-                        'cars': [{'plac': 'asd456', 'marc': 'papa', 'model': 'papa II', 'year': 2010},
-                                 {'plac': 'QW7E89', 'marc': 'PAPA III', 'model': 'PAPA IV', 'year': 2015}]},
+                        'cars': [{'plac': 'asd456', 'marc': 'papa', 'model': 'papa II', 'year': 2010, 'paid': 'Sí'},
+                                 {'plac': 'QW7E89', 'marc': 'PAPA III', 'model': 'PAPA IV', 'year': 2015, 'paid': 'Sí'}]},
           '1283728391': {'name': 'ALFONSO', 'tel': 87654321,
-                         'cars': [{'plac': '101', 'marc': 'PALA', 'model': 'PALA II', 'year': 2007},
-                                  {'plac': 'AWEU', 'marc': 'PALA III', 'model': 'PALA IV', 'year': 2020},
-                                  {'plac': '9Q8EA', 'marc': 'PALA V', 'model': 'PALA VI', 'year': 2026}]}}
+                         'cars': [{'plac': '101', 'marc': 'PALA', 'model': 'PALA II', 'year': 2007, 'paid': 'Sí'},
+                                  {'plac': 'AWEU', 'marc': 'PALA III', 'model': 'PALA IV', 'year': 2020, 'paid': 'No'},
+                                  {'plac': '9Q8EA', 'marc': 'PALA V', 'model': 'PALA VI', 'year': 2026, 'paid': 'Sí'}]}}
 
 error_mesagge = '-'*50+'\n'+"✖"*5+"   Lo siento, intentelo nuevamente   "+"✖"*5
 
@@ -47,9 +47,12 @@ for i in range(n):
         while True:
             print('   1) Sí\n   2) No')
             imp_pay = input_integer("▶  Usted ha pagado su impuesto?: ")
-            if 1<=imp_pay<= 2: break
+            if 1<=imp_pay<= 2: 
+                if imp_pay == 1: imp_pay = 'Sí'
+                elif imp_pay == 2: imp_pay = 'No'
+                break
             else: print(error_mesagge)
-        cars.append({'plac':plac,'marc': marc,'model': model,'year': year})
+        cars.append({'plac':plac,'marc': marc,'model': model,'year': year, 'paid': imp_pay})
 
     proper[nit]={
         'name': name,
@@ -58,5 +61,10 @@ for i in range(n):
     }
 
 print('~'*20+"RESUMEN DE PROPIETARIOS"+'~'*20)
-
-print(proper)
+for nt, values in proper.items():
+    print("-"*10+f"PROPIETARIO {values['name']}"+"-"*10)
+    print(f"> Identificación: {nt}")
+    print(f"> Teléfono: {str(values['tel'])[:4]}-{str(values['tel'])[4:]}")
+    print("> Vehiculos: ")
+    for cars in values['cars']:
+        print(f"   -Placa: {cars['plac']}|{cars['marc']}{cars['model']}({cars['year']})|Impuesto: {cars['paid']}")
