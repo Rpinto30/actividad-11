@@ -1,4 +1,11 @@
-proper = {}
+proper = {'123456789': {'name': 'pANL', 'tel': 12345678,
+                        'cars': [{'plac': 'asd456', 'marc': 'papa', 'model': 'papa II', 'year': 2010, 'paid': 'Sí'},
+                                 {'plac': 'QW7E89', 'marc': 'PAPA III', 'model': 'PAPA IV', 'year': 2015, 'paid': 'Sí'}]},
+          '1283728391': {'name': 'ALFONSO', 'tel': 87654321,
+                         'cars': [{'plac': '101', 'marc': 'PALA', 'model': 'PALA II', 'year': 2007, 'paid': 'Sí'},
+                                  {'plac': 'AWEU', 'marc': 'PALA III', 'model': 'PALA IV', 'year': 2020, 'paid': 'No'},
+                                  {'plac': '9Q8EA', 'marc': 'PALA V', 'model': 'PALA VI', 'year': 2026, 'paid': 'Sí'}]}}
+
 placas =  []
 error_mesagge = '-'*50+'\n'+"✖"*5+"   Lo siento, intentelo nuevamente   "+"✖"*5
 
@@ -72,3 +79,25 @@ for nt, values in proper.items():
     print("> Vehiculos: ")
     for cars in values['cars']:
         print(f"   -Placa: {cars['plac']}|{cars['marc']} {cars['model']}({cars['year']})|Impuesto: {cars['paid']}")
+
+prop_search = input("\n▶  Ingresa un NIT para buscar por separado:")
+if prop_search in proper:
+    for nt, values in proper.items():
+        if nt == prop_search:
+            print("-" * 10 + f"PROPIETARIO {values['name']}" + "-" * 10)
+            print(f"> Identificación: {nt}")
+            print(f"> Teléfono: {str(values['tel'])[:4]}-{str(values['tel'])[4:]}")
+            print("> Vehiculos: ")
+            for cars in values['cars']:
+                print(f"   -Placa: {cars['plac']}|{cars['marc']} {cars['model']}({cars['year']})|Impuesto: {cars['paid']}")
+else: print("\nLo sentimos, no lo hemos encontrado")
+
+paid_count = 0
+no_paid_count= 0
+for i in proper.values():
+    for j in i['cars']:
+        if j['paid'] == 'Sí': paid_count+=1
+        if j['paid'] == 'No': no_paid_count+=1
+print(f"\n\nTotal de impuestos pagados: {paid_count}" )
+print(f"Total de impuestos no pagados: {no_paid_count}" )
+
