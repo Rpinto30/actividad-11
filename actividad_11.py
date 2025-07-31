@@ -29,7 +29,10 @@ for i in range(n):
         else: break
 
     name = input("▶  Ingrese su nombre completo: ")
-    tel = input_integer("▶  Ingrese su número de teléfono: ")
+    while True:
+        tel = input_integer("▶  Ingrese su número de teléfono: ")
+        if len(str(tel)) == 8: break
+        else: print('-'*50+'\n'+"✖"*5+"   Lo siento, verifique que el telefono tenga 8 digitos   "+"✖"*5)
 
     while True:
         c_cars = input_integer("▶  Ingrese la cantidad de vehículos que posee: ")
@@ -67,4 +70,4 @@ for nt, values in proper.items():
     print(f"> Teléfono: {str(values['tel'])[:4]}-{str(values['tel'])[4:]}")
     print("> Vehiculos: ")
     for cars in values['cars']:
-        print(f"   -Placa: {cars['plac']}|{cars['marc']}{cars['model']}({cars['year']})|Impuesto: {cars['paid']}")
+        print(f"   -Placa: {cars['plac']}|{cars['marc']} {cars['model']}({cars['year']})|Impuesto: {cars['paid']}")
